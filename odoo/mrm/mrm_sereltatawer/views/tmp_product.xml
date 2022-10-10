@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_mrm_product_template_tree" model="ir.ui.view">
+        <field name="name">mrm.product.template.tree</field>
+        <field name="model">mrm.product.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <!--                <field name="stateCode"/>-->
+                <!--                <field name="country_id"/>-->
+                <!--                <field name="state" widget="boolean_toggle"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mrm_product_template_form" model="ir.ui.view">
+        <field name="name">mrm.product.template.form</field>
+        <field name="model">mrm.product.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <!--                            <field name="country_id"/>-->
+                        </group>
+                        <!--                        <group>-->
+                        <!--                            <field name="stateCode"/>-->
+                        <!--                            <field name="state" widget="boolean_toggle"/>-->
+                        <!--                        </group>-->
+                    </group>
+                    <notebook>
+                        <page name="category_page" string="Category">
+                            <field name="category_ids">
+                                <tree create="1" delete="0">
+                                    <field name="barcode"/>
+                                    <field name="name"/>
+                                    <field name="package"/>
+                                    <field name="unit_id"/>
+                                    <field name="haveExpired" widget="boolean_toggle" readonly="1"/>
+                                    <field name="havePart" widget="boolean_toggle" readonly="1"/>
+<!--                                    <field name="amountForPart"/>-->
+<!--                                    <field name="partUnit_id"/>-->
+<!--                                    <field name="partPackage"/>-->
+                                    <field name="status" widget="boolean_toggle"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="product_template_id" readonly="1"/>
+                                            <field name="barcode"/>
+                                            <field name="package"/>
+                                            <field name="unit_id"/>
+                                            <field name="haveExpired" widget="boolean_toggle"/>
+                                        </group>
+                                        <group>
+                                            <field name="havePart" widget="boolean_toggle"/>
+                                            <field name="amountForPart" attrs="{'required': [('havePart','=', True)],
+                                                                    'readonly': [('havePart','=', False)]}"/>
+                                            <field name="partUnit_id" attrs="{'required': [('havePart','=', True)],
+                                                                    'readonly': [('havePart','=', False)]}"/>
+                                            <field name="partPackage" readonly="1"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!--                <div class="oe_chatter">-->
+                <!--                    &lt;!&ndash;                    <field name="message_follower_ids"/>&ndash;&gt;-->
+                <!--                    <field name="activity_ids"/>-->
+                <!--                    <field name="message_ids"/>-->
+                <!--                </div>-->
+            </form>
+        </field>
+    </record>
+
+
+    <record id="mrm_product_template_action" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrm.product.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Product
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

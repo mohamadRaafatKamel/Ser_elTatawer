@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_product_info_form" model="ir.ui.view">
+        <field name="name">product.ser.product.info</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="package" readonly="1"/>
+                <field name="haveExpired" widget="boolean_toggle" readonly="1"/>
+                <field name="havePart" widget="boolean_toggle" readonly="1"/>
+                <field name="amountForPart" readonly="1"/>
+                <field name="partPackage" readonly="1"/>
+                <field name="mrm_product_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

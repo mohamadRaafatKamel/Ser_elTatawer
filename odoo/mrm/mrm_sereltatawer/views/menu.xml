@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <menuitem id="Config_product"
+              name="Product"
+              parent="mrm_ser_eltatawer_erp.erp_root"
+              action="mrm_product_template_action"
+              sequence="2"/>
+
+
+</odoo>
